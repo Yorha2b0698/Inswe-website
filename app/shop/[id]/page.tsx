@@ -127,9 +127,11 @@ export default async function ProductDetailPage({ params }: Props) {
   }
 
   return (
-    <main className="bg-white min-h-screen">
+    <main className="flex min-h-screen flex-col bg-white">
       <Header />
-      <ProductDetail product={product} />
+      <div className="flex-1">
+        <ProductDetail product={product} />
+      </div>
       <Footer />
     </main>
   );

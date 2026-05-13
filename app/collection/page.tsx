@@ -12,14 +12,13 @@ export default function CampaignPage() {
   return (
     <main
       id="MainContent"
-      className="content-for-layout"
+      className="flex min-h-screen flex-col"
       role="main"
-      data-page-transition-enabled="true"
-      data-product-transition="true"
-      data-template="page"
     >
-      <Header /> 
-      <Collection />
+      <Header />
+      <div className="flex-1">
+        <Collection />
+      </div>
       <Footer />
     </main>
   );

@@ -16,7 +16,13 @@ export default function Footer() {
             >
               Inswè
             </Link>
-            , Powered by Shopify
+            , 
+            <Link
+            href="https://www.shopify.com/?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore"
+            className="whitespace-nowrap transition-opacity duration-200 hover:opacity-60"
+          >
+           Powered by Shopify
+          </Link>
           </p>
 
           <Link

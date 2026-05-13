@@ -4,9 +4,9 @@ import Link from 'next/link';
 export const dynamic = 'force-dynamic'
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-gray-50 to-white">
       <Header />
-      <main className="section-padding">
+      <main className="section-padding flex-1">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
             <div className="max-w-4xl">

@@ -4,10 +4,10 @@ import ContactForm from '@/components/ContactForm';
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="flex min-h-screen flex-col bg-white">
       <Header />
 
-      <section className="mx-auto max-w-[560px] px-6 py-20">
+      <section className="mx-auto flex-1 w-full max-w-[560px] px-6 py-20">
         {/* Heading */}
         <h1 className="mb-2 text-center text-[42px] font-semibold tracking-[-0.03em] text-[#1a1a1a]">
           Contact

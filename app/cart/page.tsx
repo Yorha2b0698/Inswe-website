@@ -31,8 +31,9 @@ export default function CartPage() {
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="flex min-h-screen flex-col bg-white">
       <Header />
+      <div className="flex-1">
 
       <div className="mx-auto max-w-[1200px] px-6 py-8">
 
@@ -206,6 +207,8 @@ export default function CartPage() {
             ))}
           </div>
         </div>
+
+      </div>
 
       </div>
 

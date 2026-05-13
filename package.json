@@ -10,11 +10,18 @@
   "dependencies": {
     "18": "^0.0.0",
     "@heroicons/react": "^2.2.0",
+    "@stripe/react-stripe-js": "^6.3.0",
+    "@stripe/stripe-js": "^9.5.0",
     "@supabase/supabase-js": "^2.105.4",
+    "@types/nodemailer": "^8.0.0",
+    "jose": "^6.2.3",
     "lucide-react": "^1.14.0",
     "next": "16.2.6",
+    "nodemailer": "^8.0.7",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "resend": "^6.12.3",
+    "stripe": "^22.1.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

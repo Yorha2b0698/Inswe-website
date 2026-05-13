@@ -158,9 +158,9 @@ export default function CartPage() {
 
               {/* Checkout buttons */}
               <div className="flex flex-col gap-2">
-                <button className="flex h-11 w-full items-center justify-center rounded-full bg-[#1a1a1a] text-[13px] font-medium text-white transition hover:bg-[#333]">
+                <Link href="/checkout" className="flex h-11 w-full items-center justify-center rounded-full bg-[#1a1a1a] text-[13px] font-medium text-white transition hover:bg-[#333]">
                   Check out
-                </button>
+                </Link>
                 <button className="flex h-11 w-full items-center justify-center rounded-full bg-[#5A31F4] text-[14px] font-bold text-white transition hover:opacity-90">
                   shop
                 </button>

@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import AccountHeader from "@/components/AccountHeader";
 
 export default function ProfilePage() {
+  const router = useRouter();
+
   // ── Edit profile modal ──
   const [modalOpen, setModalOpen] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -48,33 +52,14 @@ export default function ProfilePage() {
   const handleAddrSave = () => setAddrOpen(false);
   const handleAddrCancel = () => setAddrOpen(false);
 
+  const handleSignOut = async () => {
+    await fetch("/api/sign-out", { method: "POST" });
+    router.push("/auth/login");
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-[#f7f7f7]">
-
-      {/* ── HEADER ── */}
-      <header className="shrink-0 border-b border-[#e8e8e8] bg-white">
-        <div className="mx-auto flex h-12 w-3/5 items-center justify-between px-6">
-          <div className="flex items-center gap-6">
-            <Link href="/" className="text-[15px] font-semibold tracking-[-0.03em] text-[#1a1a1a] no-underline">
-              Inswè
-            </Link>
-            <nav className="flex items-center gap-5">
-              <Link href="/account" className="text-[13px] text-[#666] no-underline transition hover:text-[#1a1a1a]">
-                Orders
-              </Link>
-              <Link href="/account/addresses" className="text-[13px] font-medium text-[#1a1a1a] underline underline-offset-[3px]">
-                Profile
-              </Link>
-            </nav>
-          </div>
-          <div className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full border-2 border-[#5A31F4] bg-[#ede9ff]">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5A31F4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-            </svg>
-          </div>
-        </div>
-      </header>
+      <AccountHeader active="profile" />
 
       {/* ── MAIN ── */}
       <main className="mx-auto w-3/5 flex-1 px-6 py-8">
@@ -145,10 +130,10 @@ export default function ProfilePage() {
 
         {/* SIGN OUT */}
         <div className="mb-8 flex items-center gap-5">
-          <button type="button" className="cursor-pointer rounded-xl border border-[#d0d0d0] bg-white px-5 py-2.5 text-[13px] font-bold text-[#4a90e2] transition hover:bg-[#f5f5f5]">
+          <button type="button" onClick={handleSignOut} className="cursor-pointer rounded-xl border border-[#d0d0d0] bg-white px-5 py-2.5 text-[13px] font-bold text-[#4a90e2] transition hover:bg-[#f5f5f5]">
             Sign out
           </button>
-          <button type="button" className="cursor-pointer border-none bg-transparent p-0 text-[13px] text-[#4a90e2] transition hover:opacity-70">
+          <button type="button" onClick={handleSignOut} className="cursor-pointer border-none bg-transparent p-0 text-[13px] text-[#4a90e2] transition hover:opacity-70">
             Sign out of all devices
           </button>
         </div>

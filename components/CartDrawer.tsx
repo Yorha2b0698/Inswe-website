@@ -121,7 +121,7 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
           </p>
 
           <div className="flex flex-col gap-2">
-            <Link href="/cart" onClick={onClose} className="flex h-12 w-full items-center justify-center rounded-full bg-[#1a1a1a] text-[14px] font-medium text-white transition hover:bg-[#333]">
+            <Link href="/checkout" onClick={onClose} className="flex h-12 w-full items-center justify-center rounded-full bg-[#1a1a1a] text-[14px] font-medium text-white transition hover:bg-[#333]">
               Check out
             </Link>
             <button className="flex h-12 w-full items-center justify-center rounded-full bg-[#5A31F4] text-[14px] font-bold text-white transition hover:opacity-90">

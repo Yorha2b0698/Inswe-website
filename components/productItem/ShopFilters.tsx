@@ -38,6 +38,9 @@ export default function ShopFilters({
     const [availabilityOpen, setAvailabilityOpen] = useState(false);
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
+    // Tracks the applied price range shown next to "Price"
+    const [appliedMin, setAppliedMin] = useState("");
+    const [appliedMax, setAppliedMax] = useState("");
     const [availability, setAvailability] = useState({
         inStock: false,
         outOfStock: false,
@@ -77,13 +80,24 @@ export default function ShopFilters({
     };
 
     // PRICE FILTER
+    const MAX_PRICE = Math.max(...products.map((p) => p.price));
+
     const applyPriceFilter = () => {
-        const filtered = products.filter((product) => {
-            const min = minPrice === "" ? 0 : Number(minPrice);
-            const max = maxPrice === "" ? Infinity : Number(maxPrice);
-            return product.price >= min && product.price <= max;
-        });
+        const min = minPrice === "" ? 0 : Math.min(Number(minPrice), MAX_PRICE);
+        const max = maxPrice === "" ? MAX_PRICE : Math.min(Number(maxPrice), MAX_PRICE);
+
+        // Clamp the input fields to valid range
+        const clampedMin = String(min === 0 ? "" : min);
+        const clampedMax = String(max === MAX_PRICE && maxPrice === "" ? "" : max);
+        setMinPrice(clampedMin);
+        setMaxPrice(String(max));
+
+        const filtered = products.filter(
+            (product) => product.price >= min && product.price <= max
+        );
         setFilteredProducts(filtered);
+        setAppliedMin(clampedMin);
+        setAppliedMax(String(max));
         setPriceOpen(false);
     };
 
@@ -208,6 +222,14 @@ export default function ShopFilters({
                         className="flex items-center gap-2 text-[15px]"
                     >
                         <span>Price</span>
+                        {/* Active range label */}
+                        {(appliedMin !== "" || appliedMax !== "") && (
+                            <span className="text-[12px] text-gray-500">
+                                £{appliedMin !== "" ? appliedMin : "0"}
+                                {" – "}
+                                £{appliedMax !== "" ? appliedMax : "84.99"}
+                            </span>
+                        )}
                         <ChevronDown
                             size={16}
                             className={`transition duration-200 ${priceOpen ? "rotate-180" : ""}`}
@@ -223,7 +245,14 @@ export default function ShopFilters({
                                         type="number"
                                         placeholder="0"
                                         value={minPrice}
+                                        min={0}
+                                        max={MAX_PRICE}
                                         onChange={(e) => setMinPrice(e.target.value)}
+                                        onBlur={() => {
+                                            if (minPrice !== "" && Number(minPrice) > MAX_PRICE) {
+                                                setMinPrice(String(MAX_PRICE));
+                                            }
+                                        }}
                                         className="w-full bg-transparent text-right text-[15px] text-[#333] outline-none placeholder:text-[#bbb]"
                                     />
                                 </div>
@@ -234,16 +263,23 @@ export default function ShopFilters({
                                     <span className="mr-3 text-[15px] text-[#aaa]">£</span>
                                     <input
                                         type="number"
-                                        placeholder="84.99"
+                                        placeholder={String(MAX_PRICE)}
                                         value={maxPrice}
+                                        min={0}
+                                        max={MAX_PRICE}
                                         onChange={(e) => setMaxPrice(e.target.value)}
+                                        onBlur={() => {
+                                            if (maxPrice !== "" && Number(maxPrice) > MAX_PRICE) {
+                                                setMaxPrice(String(MAX_PRICE));
+                                            }
+                                        }}
                                         className="w-full bg-transparent text-right text-[15px] text-[#333] outline-none placeholder:text-[#bbb]"
                                     />
                                 </div>
                             </div>
 
                             <p className="mt-4 text-[13px] font-medium text-[#222]">
-                                The highest price is £84.99
+                                The highest price is £{MAX_PRICE.toFixed(2)}
                             </p>
 
                             <div className="mt-4 flex items-center gap-4">
@@ -257,6 +293,8 @@ export default function ShopFilters({
                                     onClick={() => {
                                         setMinPrice("");
                                         setMaxPrice("");
+                                        setAppliedMin("");
+                                        setAppliedMax("");
                                         setFilteredProducts(products);
                                     }}
                                     className="text-[13px] text-[#555] underline underline-offset-2 transition hover:text-black"

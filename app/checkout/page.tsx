@@ -8,9 +8,13 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useCart } from "@/lib/CartContext";
 import StripePaymentForm from "@/components/StripePaymentForm";
 
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
+// Only load Stripe if a real publishable key is configured
+const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const stripeConfigured =
+  stripeKey &&
+  stripeKey !== "pk_test_YOUR_PUBLISHABLE_KEY_HERE" &&
+  stripeKey.startsWith("pk_");
+const stripePromise = stripeConfigured ? loadStripe(stripeKey!) : null;
 
 export default function CheckoutPage() {
   const { items } = useCart();
@@ -19,9 +23,9 @@ export default function CheckoutPage() {
 
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
-  // Create a PaymentIntent as soon as the page loads
+  // Only create a PaymentIntent if Stripe is properly configured
   useEffect(() => {
-    if (subtotal <= 0) return;
+    if (!stripeConfigured || subtotal <= 0) return;
     fetch("/api/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -232,7 +236,7 @@ export default function CheckoutPage() {
             {/* Card fields */}
             {form.payment === "card" && (
               <div className="bg-[#f5f7fa] px-4 pb-4 pt-3">
-                {clientSecret ? (
+                {stripeConfigured && clientSecret ? (
                   <Elements stripe={stripePromise} options={{ clientSecret, appearance: { theme: "stripe" } }}>
                     <StripePaymentForm onSuccess={() => {}} />
                   </Elements>

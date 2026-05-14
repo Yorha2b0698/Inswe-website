@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/lib/CartContext";
+import ProductCard from "@/components/productItem/ProductCard";
 
 type CartItem = {
   id: number;
@@ -17,10 +18,26 @@ type CartItem = {
 };
 
 const relatedProducts = [
-  { id: 1, name: "black half zipper",     price: 79.99, image: "/assets/images/PHO00007.JPG" },
-  { id: 2, name: "Black rope trucker cap", price: 79.99, image: "/assets/images/PHO00003.JPG" },
-  { id: 5, name: "blue truck robe cap",    price: 84.99, image: "/assets/images/PHO00006.JPG" },
-  { id: 6, name: "Brown half zipper cap",  price: 79.99, image: "/assets/images/PHO00009.JPG" },
+  {
+    id: 1, name: "black half zipper", price: 79.99, inStock: true,
+    image: "/assets/images/PHO00007.JPG",
+    images: ["/assets/images/PHO00007.JPG", "/assets/images/PHO00003.JPG", "/assets/images/PHO00004.JPG", "/assets/images/PHO00005.JPG"],
+  },
+  {
+    id: 2, name: "Black rope trucker cap", price: 79.99, inStock: true,
+    image: "/assets/images/PHO00003.JPG",
+    images: ["/assets/images/PHO00003.JPG", "/assets/images/PHO00006.JPG", "/assets/images/PHO00009.JPG", "/assets/images/PHO00010.JPG"],
+  },
+  {
+    id: 5, name: "blue truck robe cap", price: 84.99, inStock: true,
+    image: "/assets/images/PHO00006.JPG",
+    images: ["/assets/images/PHO00006.JPG", "/assets/images/PHO00010.JPG", "/assets/images/PHO00011.JPG", "/assets/images/PHO00003.JPG"],
+  },
+  {
+    id: 6, name: "Brown half zipper cap", price: 79.99, inStock: true,
+    image: "/assets/images/PHO00009.JPG",
+    images: ["/assets/images/PHO00009.JPG", "/assets/images/PHO00004.JPG", "/assets/images/PHO00005.JPG", "/assets/images/PHO00007.JPG"],
+  },
 ];
 
 export default function CartPage() {
@@ -189,19 +206,7 @@ export default function CartPage() {
 
           <div className="grid grid-cols-4 gap-4">
             {relatedProducts.map((product) => (
-              <Link key={product.id} href={`/shop/${product.id}`} className="group">
-                <div className="relative aspect-square overflow-hidden rounded-lg bg-[#f3f3f3]">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 1200px) 25vw"
-                  />
-                </div>
-                <p className="mt-2 text-[13px] font-medium text-[#1a1a1a]">{product.name}</p>
-                <p className="mt-0.5 text-[12px] text-[#888]">£{product.price.toFixed(2)} GBP</p>
-              </Link>
+              <ProductCard key={product.id} product={product} view="default" />
             ))}
           </div>
         </div>

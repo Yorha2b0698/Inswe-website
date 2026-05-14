@@ -1,17 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { otpStore } from "@/lib/otpStore";
-
-// Create transporter once — reused across requests
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST ?? "smtp.gmail.com",
-  port: Number(process.env.SMTP_PORT ?? 587),
-  secure: false, // STARTTLS
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS, // Gmail App Password (not your login password)
-  },
-});
 
 function generateOtp(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -41,31 +30,43 @@ export async function POST(req: NextRequest) {
       attempts: 0,
     });
 
-    try {
-      await transporter.sendMail({
-        from: `"Inswè" <${process.env.SMTP_USER}>`,
-        to: email,
-        subject: `${code} is your Inswè verification code`,
-        html: `
-          <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:480px;margin:0 auto;padding:40px 24px;background:#ffffff;">
-            <h2 style="font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 8px;">Inswè</h2>
-            <p style="font-size:15px;color:#555;margin:0 0 32px;">Use the code below to sign in or create your account.</p>
-            <div style="background:#f5f5f5;border-radius:12px;padding:28px;text-align:center;margin-bottom:28px;">
-              <span style="font-size:44px;font-weight:700;letter-spacing:14px;color:#1a1a1a;">${code}</span>
-            </div>
-            <p style="font-size:13px;color:#888;margin:0;">
-              This code expires in <strong>10 minutes</strong>.<br/>
-              If you didn't request this, you can safely ignore this email.
-            </p>
-          </div>
-        `,
-        text: `Your Inswè verification code is: ${code}\n\nThis code expires in 10 minutes.`,
-      });
-    } catch (mailErr) {
+    // Use Resend — works on Vercel serverless without SMTP config
+    const resendKey = process.env.RESEND_API_KEY;
+    if (!resendKey) {
       otpStore.delete(email);
-      console.error("SMTP error:", mailErr);
       return NextResponse.json(
-        { error: "Failed to send email. Please check your email address and try again." },
+        { error: "Email service is not configured. Please contact support." },
+        { status: 503 }
+      );
+    }
+
+    const resend = new Resend(resendKey);
+
+    const { error } = await resend.emails.send({
+      from: "Inswè <onboarding@resend.dev>",
+      to: email,
+      subject: `${code} is your Inswè verification code`,
+      html: `
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:480px;margin:0 auto;padding:40px 24px;background:#ffffff;">
+          <h2 style="font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 8px;">Inswè</h2>
+          <p style="font-size:15px;color:#555;margin:0 0 32px;">Use the code below to sign in or create your account.</p>
+          <div style="background:#f5f5f5;border-radius:12px;padding:28px;text-align:center;margin-bottom:28px;">
+            <span style="font-size:44px;font-weight:700;letter-spacing:14px;color:#1a1a1a;">${code}</span>
+          </div>
+          <p style="font-size:13px;color:#888;margin:0;">
+            This code expires in <strong>10 minutes</strong>.<br/>
+            If you didn't request this, you can safely ignore this email.
+          </p>
+        </div>
+      `,
+      text: `Your Inswè verification code is: ${code}\n\nThis code expires in 10 minutes.`,
+    });
+
+    if (error) {
+      otpStore.delete(email);
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { error: "Failed to send email. Please try again." },
         { status: 500 }
       );
     }

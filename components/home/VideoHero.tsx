@@ -86,12 +86,12 @@ export default function VideoHero({
             <source src={videoSrc} type="video/mp4" />
           </video>
         ) : images ? (
-          <div className="relative w-full aspect-[3/4] sm:aspect-[4/3] md:aspect-[16/9]">
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/9]" style={{ maxHeight: "70vh" }}>
             <Image
               src={images}
               alt="campaign"
               fill
-              className="object-contain"
+              className="object-cover"
               priority
             />
           </div>

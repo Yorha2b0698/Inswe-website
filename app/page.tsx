@@ -16,8 +16,7 @@ export default function HomePage() {
         subtitle="Made with care and unconditionally loved by our customers."
         buttonText="Shop Now"
         buttonHref="/shop"
-        videoSrc="/assets/videos/MOV00017.AVI"
-        poster="/poster.jpg"
+        videoSrc="/assets/videos/about_bag.mp4"
       />
 
       <CollectionCarousel />

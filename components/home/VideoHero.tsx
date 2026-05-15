@@ -33,7 +33,7 @@ export default function VideoHero({
             playsInline
             poster={poster}
           >
-            <source src={videoSrc} type="video/AVI" />
+            <source src={videoSrc} type="video/mp4" />
           </video>
         ) : images ? (
           <div className="relative h-full w-full">

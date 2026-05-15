@@ -105,7 +105,7 @@ export default function CartPage() {
                     </button>
 
                     {/* Line total */}
-                    <span className="w-20 text-right text-[14px] font-medium text-[#1a1a1a]">
+                    <span className="hidden sm:block w-20 text-right text-[14px] font-medium text-[#1a1a1a]">
                       £{(item.price * item.quantity).toFixed(2)}
                     </span>
                   </div>

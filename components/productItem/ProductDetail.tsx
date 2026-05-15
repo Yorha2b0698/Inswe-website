@@ -138,7 +138,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <hr className="my-5 border-[#e5e5e5]" />
 
           {/* Quantity + Add to cart */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             {/* Quantity stepper */}
             <div className="flex h-[44px] items-center rounded-full border border-[#d5d5d5] bg-white px-1">
               <button

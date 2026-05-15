@@ -52,6 +52,13 @@ export default function ProductCard({ product, view }: ProductCardProps) {
         setHovered(false);
         setActiveIndex(0);
       }}
+      onClick={(e) => {
+        // On touch devices, first tap reveals controls; second tap navigates
+        if (!hovered) {
+          e.preventDefault();
+          setHovered(true);
+        }
+      }}
     >
       {/* IMAGE AREA */}
       <div

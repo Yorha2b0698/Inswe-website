@@ -99,7 +99,7 @@ export default function CheckoutPage() {
 
           {/* Express checkout */}
           <p className="mb-3 text-center text-[12px] text-[#888]">Express checkout</p>
-          <div className="mb-4 flex gap-2">
+          <div className="mb-4 flex flex-wrap gap-2">
             {/* Shop Pay */}
             <button className="flex h-11 flex-1 items-center justify-center rounded-lg bg-[#5A31F4] text-[15px] font-bold text-white transition hover:opacity-90">
               shop

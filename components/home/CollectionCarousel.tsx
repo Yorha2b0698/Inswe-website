@@ -33,12 +33,12 @@ export default function CollectionCarousel() {
         </div>
 
         {/* Scrollable product row */}
-        <div className="flex gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {products.map((product) => (
             <Link
               key={product.id}
               href={`/shop/${product.id}`}
-              className="group min-w-[160px] flex-shrink-0 sm:min-w-[200px] md:min-w-[220px]"
+              className="group min-w-[160px] flex-shrink-0 snap-start sm:min-w-[200px] md:min-w-[220px]"
             >
               {/* Image */}
               <div className="relative aspect-[1/1.15] w-full overflow-hidden rounded-lg bg-[#f3f3f3]">

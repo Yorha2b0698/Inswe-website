@@ -24,13 +24,13 @@ export default function OrdersPage() {
       {/* ── FOOTER ── */}
       <footer className="shrink-0 border-t border-[#e5e5e5] py-5">
         <div className="mx-auto flex w-full max-w-[900px] flex-wrap items-center justify-center gap-3 px-4 sm:gap-5 sm:px-6">
-          <Link href="/refund-policy" className="text-[11px] text-[#aaa] no-underline transition hover:text-[#555]">
+          <Link href="/policies/refund-policy" className="text-[11px] text-[#aaa] no-underline transition hover:text-[#555]">
             Refund policy
           </Link>
-          <Link href="/privacy-policy" className="text-[11px] text-[#aaa] no-underline transition hover:text-[#555]">
+          <Link href="/policies/privacy-policy" className="text-[11px] text-[#aaa] no-underline transition hover:text-[#555]">
             Privacy policy
           </Link>
-          <Link href="/terms-of-service" className="text-[11px] text-[#aaa] no-underline transition hover:text-[#555]">
+          <Link href="/policies/terms-of-service" className="text-[11px] text-[#aaa] no-underline transition hover:text-[#555]">
             Terms of service
           </Link>
         </div>

@@ -354,7 +354,7 @@ export default function ShopFilters({
                 </div>
 
                 {/* GRID ICONS */}
-                <div className="flex items-center gap-3">
+                <div className="hidden sm:flex items-center gap-3">
                     <button
                         onClick={() => setView("default")}
                         className={`grid grid-cols-2 gap-[2px] ${view === "default" ? "opacity-100" : "opacity-40"}`}

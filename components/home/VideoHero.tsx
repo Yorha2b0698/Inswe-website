@@ -8,7 +8,7 @@ type Props = {
   buttonHref: string;
   videoSrc?: string;
   poster?: string;
-  images?: string[];
+  images?: string;
 };
 
 export default function VideoHero({
@@ -21,7 +21,7 @@ export default function VideoHero({
   images,
 }: Props) {
   return (
-    <section className="relative w-full min-h-[70vh] flex items-center justify-center text-white">
+    <section className={`relative w-full flex items-center justify-center text-white ${images ? "aspect-[16/9]" : "min-h-[70vh]"}`}>
       {/* Background */}
       <div className="absolute inset-0">
         {videoSrc ? (
@@ -36,17 +36,14 @@ export default function VideoHero({
             <source src={videoSrc} type="video/AVI" />
           </video>
         ) : images ? (
-          <div className="grid grid-cols-2 h-full">
-            {images.map((img, i) => (
-              <Image
-                key={i}
-                src={img}
-                alt="campaign"
-                width={800}
-                height={800}
-                className="object-cover w-full h-full"
-              />
-            ))}
+          <div className="relative h-full w-full">
+            <Image
+              src={images}
+              alt="campaign"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         ) : null}
 

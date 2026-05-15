@@ -26,10 +26,9 @@ export default function HomePage() {
         title="DISCOVER INSWÈ CAMPAIGN SZN 1"
         buttonText="SEE NOW"
         buttonHref="/collection"
-        images={[
-          "/assets/images/campaign-6.jpg",
+        images={
           "/assets/images/campaign-7.jpg"
-        ]}
+        }
       />
 
       <SubscribeSection />

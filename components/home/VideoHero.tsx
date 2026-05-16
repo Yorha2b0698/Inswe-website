@@ -29,21 +29,30 @@ export default function VideoHero({
     const video = videoRef.current;
     if (!video) return;
 
-    // Force play on mount
+    // Force play on mount with more aggressive retry
     const tryPlay = () => {
-      video.play().catch(() => {});
+      const playAttempt = () => {
+        video.play().catch((err) => {
+          console.log("Video play attempt failed:", err);
+          // Retry after a short delay
+          setTimeout(playAttempt, 500);
+        });
+      };
+      playAttempt();
     };
 
     tryPlay();
 
-    // Resume whenever it pauses (browser may pause it on tab switch, scroll, etc.)
+    // More aggressive resume when paused
     const handlePause = () => {
-      // Small delay to avoid fighting with intentional pauses
-      setTimeout(() => {
-        if (video.paused && !video.ended) {
-          video.play().catch(() => {});
-        }
-      }, 200);
+      // Immediate retry for continuous playback
+      if (video.paused && !video.ended) {
+        setTimeout(() => {
+          if (video.paused && !video.ended) {
+            video.play().catch(() => {});
+          }
+        }, 100);
+      }
     };
 
     // Resume when tab becomes visible again
@@ -58,12 +67,27 @@ export default function VideoHero({
       if (video.paused) video.play().catch(() => {});
     };
 
+    // Add timeupdate listener to detect if video is stuck
+    const handleTimeUpdate = () => {
+      // If video is playing but currentTime hasn't changed in 2 seconds, restart
+      if (!video.paused && Date.now() - (window as any).lastVideoTimeUpdate > 2000) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      }
+      (window as any).lastVideoTimeUpdate = Date.now();
+    };
+
     video.addEventListener("pause", handlePause);
+    video.addEventListener("timeupdate", handleTimeUpdate);
     document.addEventListener("visibilitychange", handleVisibility);
     window.addEventListener("focus", handleFocus);
 
+    // Set initial time update timestamp
+    (window as any).lastVideoTimeUpdate = Date.now();
+
     return () => {
       video.removeEventListener("pause", handlePause);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
       document.removeEventListener("visibilitychange", handleVisibility);
       window.removeEventListener("focus", handleFocus);
     };

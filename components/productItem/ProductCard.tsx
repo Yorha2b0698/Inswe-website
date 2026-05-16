@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
-import { Product } from "./ProductSection";
+import { type Product } from "@/lib/products";
 import { useCart } from "@/lib/CartContext";
 
 type ProductCardProps = {
@@ -66,8 +66,15 @@ export default function ProductCard({ product, view }: ProductCardProps) {
           view === "default" ? "aspect-[1/1.15]" : "aspect-square"
         }`}
       >
+        {/* Featured badge for CollectionCarousel products */}
+        {product.isFeatured && (
+          <div className="absolute left-2 top-2 z-10 rounded-full bg-[#5A31F4] px-2 py-1 text-[10px] font-medium text-white">
+            Featured
+          </div>
+        )}
+
         {/* All images stacked — only active one is visible */}
-        {images.map((src, i) => (
+        {images.map((src: string, i: number) => (
           <Image
             key={src}
             src={src}
@@ -133,7 +140,7 @@ export default function ProductCard({ product, view }: ProductCardProps) {
 
             {/* Dot indicators */}
             <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1">
-              {images.map((_, i) => (
+              {images.map((_: string, i: number) => (
                 <span
                   key={i}
                   className={`block h-[5px] rounded-full transition-all duration-200 ${

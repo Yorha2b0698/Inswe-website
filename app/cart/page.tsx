@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/lib/CartContext";
 import ProductCard from "@/components/productItem/ProductCard";
+import { getRelatedProducts } from "@/lib/products";
 
 type CartItem = {
   id: number;
@@ -17,28 +18,8 @@ type CartItem = {
   quantity: number;
 };
 
-const relatedProducts = [
-  {
-    id: 1, name: "black half zipper", price: 79.99, inStock: true,
-    image: "/assets/images/PHO00007.JPG",
-    images: ["/assets/images/PHO00007.JPG", "/assets/images/PHO00003.JPG", "/assets/images/PHO00004.JPG", "/assets/images/PHO00005.JPG"],
-  },
-  {
-    id: 2, name: "Black rope trucker cap", price: 79.99, inStock: true,
-    image: "/assets/images/PHO00003.JPG",
-    images: ["/assets/images/PHO00003.JPG", "/assets/images/PHO00006.JPG", "/assets/images/PHO00009.JPG", "/assets/images/PHO00010.JPG"],
-  },
-  {
-    id: 5, name: "blue truck robe cap", price: 84.99, inStock: true,
-    image: "/assets/images/PHO00006.JPG",
-    images: ["/assets/images/PHO00006.JPG", "/assets/images/PHO00010.JPG", "/assets/images/PHO00011.JPG", "/assets/images/PHO00003.JPG"],
-  },
-  {
-    id: 6, name: "Brown half zipper cap", price: 79.99, inStock: true,
-    image: "/assets/images/PHO00009.JPG",
-    images: ["/assets/images/PHO00009.JPG", "/assets/images/PHO00004.JPG", "/assets/images/PHO00005.JPG", "/assets/images/PHO00007.JPG"],
-  },
-];
+// Get related products (featured products from CollectionCarousel)
+const relatedProducts = getRelatedProducts(0, 4);
 
 export default function CartPage() {
   const { items, totalCount, updateQty, removeItem } = useCart();

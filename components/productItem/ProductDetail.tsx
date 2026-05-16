@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, RotateCcw, Truck } from "lucide-react";
 import { useCart } from "@/lib/CartContext";
+import { allProducts, getRelatedProducts } from "@/lib/products";
 
 type ProductDetailProps = {
   product: {
@@ -15,18 +16,6 @@ type ProductDetailProps = {
     inStock: boolean;
   };
 };
-
-// All products — used to build the "You may also like" grid
-const allProducts = [
-  { id: 1, name: "black half zipper",     price: 79.99, image: "/assets/images/PHO00007.JPG" },
-  { id: 2, name: "Black rope trucker cap", price: 79.99, image: "/assets/images/PHO00003.JPG" },
-  { id: 3, name: "black truck robe cap",   price: 84.99, image: "/assets/images/PHO00004.JPG" },
-  { id: 4, name: "black zipper cap",       price: 84.99, image: "/assets/images/PHO00005.JPG" },
-  { id: 5, name: "blue truck robe cap",    price: 84.99, image: "/assets/images/PHO00006.JPG" },
-  { id: 6, name: "Brown half zipper cap",  price: 79.99, image: "/assets/images/PHO00009.JPG" },
-  { id: 7, name: "Pink zipper cap",        price: 84.99, image: "/assets/images/PHO00010.JPG" },
-  { id: 8, name: "white rope cap",         price: 79.99, image: "/assets/images/PHO00011.JPG" },
-];
 
 export default function ProductDetail({ product }: ProductDetailProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -53,8 +42,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const next = () =>
     setActiveIndex((i) => (i === product.images.length - 1 ? 0 : i + 1));
 
-  // Pick 4 products that are not the current one
-  const related = allProducts.filter((p) => p.id !== product.id).slice(0, 4);
+  // Get related products (excluding the current one)
+  const related = getRelatedProducts(product.id, 4);
 
   return (
     <>

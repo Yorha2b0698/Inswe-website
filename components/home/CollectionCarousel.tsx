@@ -4,17 +4,9 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { getFeaturedProducts } from "@/lib/products";
 
-const products = [
-  { id: 1, name: "black half zipper",      price: 79.99, image: "/assets/images/PHO00007.JPG" },
-  { id: 2, name: "Black rope trucker cap",  price: 79.99, image: "/assets/images/PHO00003.JPG" },
-  { id: 3, name: "black truck robe cap",    price: 84.99, image: "/assets/images/PHO00004.JPG" },
-  { id: 4, name: "black zipper cap",        price: 84.99, image: "/assets/images/PHO00005.JPG" },
-  { id: 5, name: "blue truck robe cap",     price: 84.99, image: "/assets/images/PHO00006.JPG" },
-  { id: 6, name: "Brown half zipper cap",   price: 79.99, image: "/assets/images/PHO00009.JPG" },
-  { id: 7, name: "Pink zipper cap",         price: 84.99, image: "/assets/images/PHO00010.JPG" },
-  { id: 8, name: "white rope cap",          price: 79.99, image: "/assets/images/PHO00011.JPG" },
-];
+const products = getFeaturedProducts();
 
 export default function CollectionCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);

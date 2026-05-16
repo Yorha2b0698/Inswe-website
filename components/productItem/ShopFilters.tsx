@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction, useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
-import { Product } from "./ProductSection";
+import { type Product } from "@/lib/products";
 
 interface ShopFiltersProps {
     products: Product[];

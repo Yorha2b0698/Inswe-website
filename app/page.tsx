@@ -11,9 +11,9 @@ export default function HomePage() {
       <Header />
       <Hero />
 
-      {/* Main video — New arrivals */}
+      {/* Main video — Pre-order now */}
       <VideoHero
-        title="New arrivals"
+        title="Pre-order now"
         subtitle="Made with care and unconditionally loved by our customers."
         buttonText="Shop Now"
         buttonHref="/shop"

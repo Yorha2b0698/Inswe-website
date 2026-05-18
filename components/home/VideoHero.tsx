@@ -12,6 +12,7 @@ type Props = {
   videoSrc?: string;
   poster?: string;
   images?: string;
+  showLogo?: boolean;
 };
 
 export default function VideoHero({
@@ -22,6 +23,7 @@ export default function VideoHero({
   videoSrc,
   poster,
   images,
+  showLogo = false,
 }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -87,7 +89,16 @@ export default function VideoHero({
         {/* Content overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold sm:text-3xl md:text-5xl">{title}</h2>
+            {/* Logo — shown when showLogo is true */}
+            {showLogo && (
+              <p className="mb-4 text-[48px] font-bold tracking-[-0.04em] text-white drop-shadow-lg sm:text-[72px] md:text-[96px]">
+                Inswè
+              </p>
+            )}
+
+            {title && (
+              <h2 className="text-2xl font-semibold sm:text-3xl md:text-5xl">{title}</h2>
+            )}
 
             {subtitle && (
               <p className="mt-3 text-sm md:text-base text-white/80 max-w-[560px] mx-auto">

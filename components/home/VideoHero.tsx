@@ -26,70 +26,25 @@ export default function VideoHero({
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    if (!videoSrc) return;
     const video = videoRef.current;
     if (!video) return;
 
-    // Force play on mount with more aggressive retry
     const tryPlay = () => {
-      const playAttempt = () => {
-        video.play().catch((err) => {
-          console.log("Video play attempt failed:", err);
-          // Retry after a short delay
-          setTimeout(playAttempt, 500);
-        });
-      };
-      playAttempt();
+      video.play().catch(() => {});
     };
 
+    // Play immediately
     tryPlay();
 
-    // More aggressive resume when paused
-    const handlePause = () => {
-      // Immediate retry for continuous playback
-      if (video.paused && !video.ended) {
-        setTimeout(() => {
-          if (video.paused && !video.ended) {
-            video.play().catch(() => {});
-          }
-        }, 100);
-      }
-    };
-
-    // Resume when tab becomes visible again
+    // Resume when tab becomes visible
     const handleVisibility = () => {
-      if (!document.hidden && video.paused) {
-        video.play().catch(() => {});
-      }
+      if (!document.hidden && video.paused && !video.ended) tryPlay();
     };
-
-    // Resume when page regains focus
-    const handleFocus = () => {
-      if (video.paused) video.play().catch(() => {});
-    };
-
-    // Add timeupdate listener to detect if video is stuck
-    const handleTimeUpdate = () => {
-      // If video is playing but currentTime hasn't changed in 2 seconds, restart
-      if (!video.paused && Date.now() - (window as any).lastVideoTimeUpdate > 2000) {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-      }
-      (window as any).lastVideoTimeUpdate = Date.now();
-    };
-
-    video.addEventListener("pause", handlePause);
-    video.addEventListener("timeupdate", handleTimeUpdate);
     document.addEventListener("visibilitychange", handleVisibility);
-    window.addEventListener("focus", handleFocus);
-
-    // Set initial time update timestamp
-    (window as any).lastVideoTimeUpdate = Date.now();
 
     return () => {
-      video.removeEventListener("pause", handlePause);
-      video.removeEventListener("timeupdate", handleTimeUpdate);
       document.removeEventListener("visibilitychange", handleVisibility);
-      window.removeEventListener("focus", handleFocus);
     };
   }, [videoSrc]);
 
@@ -110,7 +65,10 @@ export default function VideoHero({
             <source src={videoSrc} type="video/mp4" />
           </video>
         ) : images ? (
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/9]" style={{ maxHeight: "70vh" }}>
+          <div
+            className="relative w-full aspect-[4/3] sm:aspect-[16/9]"
+            style={{ maxHeight: "70vh" }}
+          >
             <Image
               src={images}
               alt="campaign"

@@ -11,6 +11,7 @@ export default function HomePage() {
       <Header />
       <Hero />
 
+      {/* Main video — New arrivals */}
       <VideoHero
         title="New arrivals"
         subtitle="Made with care and unconditionally loved by our customers."
@@ -19,24 +20,34 @@ export default function HomePage() {
         videoSrc="/assets/videos/about_bag.mp4"
       />
 
-      <CollectionCarousel />
+      {/* First DISCOVER COLLECTION — caps only */}
+      <CollectionCarousel
+        capsOnly={true}
+        title="DISCOVER COLLECTION"
+      />
 
+      {/* Caps video */}
+      <VideoHero
+        title=""
+        buttonText="Shop Caps"
+        buttonHref="/shop"
+        videoSrc="/assets/videos/Caps.mp4"
+      />
+
+      {/* Second DISCOVER COLLECTION — caps only, below Caps.mp4 */}
+      <CollectionCarousel
+        capsOnly={true}
+        title="DISCOVER COLLECTION"
+      />
+
+      {/* Campaign image section */}
       <VideoHero
         title="DISCOVER INSWÈ CAMPAIGN SZN 1"
         buttonText="SEE NOW"
         buttonHref="/shop"
-        images={
-          "/assets/images/campaign-7.jpg"
-        }
+        images="/assets/images/campaign-7.jpg"
       />
 
-      <VideoHero
-        title="New arrivals"
-        subtitle="Made with care and unconditionally loved by our customers."
-        buttonText="Shop Now"
-        buttonHref="/shop"
-        videoSrc="/assets/videos/Caps.mp4"
-      />
       <SubscribeSection />
       <Footer />
     </main>

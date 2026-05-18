@@ -4,11 +4,78 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { getFeaturedProducts } from "@/lib/products";
 
-const products = getFeaturedProducts();
+export const allProducts = [
+  {
+    id: 1, name: "Black Cap",        price: 79.99, isCaps: true,
+    image: "/assets/images/JNSWE_caps_18_black.jpg",
+    images: [
+      "/assets/images/JNSWE_caps_18_black.jpg",
+      "/assets/images/JNSWE_caps_18_black1.jpg",
+      "/assets/images/JNSWE_caps_18_black2.jpg",
+      "/assets/images/JNSWE_caps_18_black3.jpg",
+    ],
+  },
+  {
+    id: 2, name: "Pink Cap",         price: 79.99, isCaps: true,
+    image: "/assets/images/JNSWE_caps_17_pink.jpg",
+    images: [
+      "/assets/images/JNSWE_caps_17_pink.jpg",
+      "/assets/images/JNSWE_caps_17_pink1.jpg",
+      "/assets/images/JNSWE_caps_17_pink2.jpg",
+      "/assets/images/JNSWE_caps_17_pink3.jpg",
+    ],
+  },
+  {
+    id: 3, name: "Blue Cap",         price: 84.99, isCaps: true,
+    image: "/assets/images/JNSWE_caps_19_blue.jpg",
+    images: [
+      "/assets/images/JNSWE_caps_19_blue.jpg",
+      "/assets/images/JNSWE_caps_19_blue1.jpg",
+      "/assets/images/JNSWE_caps_19_blue2.jpg",
+      "/assets/images/JNSWE_caps_19_blue3.jpg",
+    ],
+  },
+  {
+    id: 4, name: "Brown Cap",        price: 84.99, isCaps: true,
+    image: "/assets/images/JNSWE_caps_20_brown.jpg",
+    images: [
+      "/assets/images/JNSWE_caps_20_brown.jpg",
+      "/assets/images/JNSWE_caps_20_brown1.jpg",
+      "/assets/images/JNSWE_caps_20_brown2.jpg",
+      "/assets/images/JNSWE_caps_20_brown3.jpg",
+    ],
+  },
+  {
+    id: 5, name: "Back Zip Cap",     price: 84.99, isCaps: true,
+    image: "/assets/images/JNSWE_caps_21_backzip.jpg",
+    images: [
+      "/assets/images/JNSWE_caps_21_backzip.jpg",
+      "/assets/images/JNSWE_caps_21_backzip1.jpg",
+      "/assets/images/JNSWE_caps_21_backzip2.jpg",
+      "/assets/images/JNSWE_caps_21_backzip3.jpg",
+    ],
+  },
+  {
+    id: 6, name: "White Cap",        price: 79.99, isCaps: true,
+    image: "/assets/images/JNSWE_caps_22_white.jpg",
+    images: [
+      "/assets/images/JNSWE_caps_22_white.jpg",
+      "/assets/images/JNSWE_caps_22_white1.jpg",
+      "/assets/images/JNSWE_caps_22_white2.jpg",
+      "/assets/images/JNSWE_caps_22_white3.jpg",
+    ],
+  },
+];
 
-export default function CollectionCarousel() {
+type Props = {
+  capsOnly?: boolean;
+  title?: string;
+};
+
+export default function CollectionCarousel({ capsOnly = false, title = "DISCOVER COLLECTION" }: Props) {
+  const products = capsOnly ? allProducts.filter((p) => p.isCaps) : allProducts;
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -35,8 +102,8 @@ export default function CollectionCarousel() {
   const scroll = (dir: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
-    const cardWidth = el.querySelector("a")?.offsetWidth ?? 300;
-    el.scrollBy({ left: dir === "left" ? -cardWidth - 16 : cardWidth + 16, behavior: "smooth" });
+    const cardWidth = (el.querySelector("a") as HTMLElement)?.offsetWidth ?? 300;
+    el.scrollBy({ left: dir === "left" ? -(cardWidth + 16) : cardWidth + 16, behavior: "smooth" });
   };
 
   return (
@@ -46,10 +113,9 @@ export default function CollectionCarousel() {
         {/* Header row */}
         <div className="mb-8 flex items-center justify-between">
           <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-[#1a1a1a]">
-            DISCOVER COLLECTION
+            {title}
           </h2>
           <div className="flex items-center gap-3">
-            {/* Scroll buttons */}
             <button
               onClick={() => scroll("left")}
               aria-label="Scroll left"
@@ -88,7 +154,6 @@ export default function CollectionCarousel() {
               className="group min-w-[260px] flex-shrink-0 sm:min-w-[300px] md:min-w-[340px]"
               style={{ scrollSnapAlign: "start" }}
             >
-              {/* Image */}
               <div className="relative aspect-[1/1.15] w-full overflow-hidden rounded-lg bg-[#f3f3f3]">
                 <Image
                   src={product.image}
@@ -98,8 +163,6 @@ export default function CollectionCarousel() {
                   sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 340px"
                 />
               </div>
-
-              {/* Info */}
               <div className="pt-3">
                 <p className="text-[13px] font-normal leading-snug text-[#222]">
                   {product.name}

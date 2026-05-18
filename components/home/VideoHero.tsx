@@ -97,7 +97,7 @@ export default function VideoHero({
             )}
 
             {title && (
-              <h2 className="text-2xl font-semibold sm:text-3xl md:text-5xl">{title}</h2>
+              <h2 className="text-3xl font-semibold sm:text-3xl md:text-5xl">{title}</h2>
             )}
 
             {subtitle && (

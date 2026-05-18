@@ -30,6 +30,13 @@ export default function HomePage() {
         }
       />
 
+      <VideoHero
+        title="New arrivals"
+        subtitle="Made with care and unconditionally loved by our customers."
+        buttonText="Shop Now"
+        buttonHref="/shop"
+        videoSrc="/assets/videos/Caps.mp4"
+      />
       <SubscribeSection />
       <Footer />
     </main>

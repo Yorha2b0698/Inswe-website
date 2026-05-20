@@ -4,108 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-export const allProducts = [
-  {
-    id: 1, name: " Cesarine leather bag",        price: 79.99, isCaps: false,
-    image: "/assets/images/Bag-black1.jpeg",
-    images: [
-      "/assets/images/Bag-black1.jpeg",
-      "/assets/images/Bag-black2.jpeg",
-      "/assets/images/Bag-black3.jpeg",
-      "/assets/images/Bag-black4.png",
-    ],
-  },
-  {
-    id: 2, name: " Cesarine leather bag",        price: 79.99, isCaps: false,
-    image: "/assets/images/Bag-black-small.jpg",
-    images: [
-      "/assets/images/Bag-black-small1.jpg",
-      "/assets/images/Bag-black-small2.jpg",
-      "/assets/images/Bag-black-small3.jpg",
-      "/assets/images/Bag-black-small4.JPG",
-    ],
-  },
-  {
-    id: 3, name: "Cesarine Grande yellow bag",        price: 79.99, isCaps: false,
-    image: "/assets/images/Bag-yellow1.png",
-    images: [
-      "/assets/images/Bag-yellow1.png",
-      "/assets/images/Bag-yellow2.png",
-      "/assets/images/Bag-yellow3.png",
-    ],
-  },
-  {
-    id: 4, name: "Cesarine Grande yellow bag",        price: 79.99, isCaps: false,
-    image: "/assets/images/Bag-yellow-small.png",
-    images: [
-      "/assets/images/Bag-yellow-small.png",
-      "/assets/images/Bag-yellow-small1.png",
-      "/assets/images/Bag-yellow-small2.png",
-      "/assets/images/Bag-yellow-small3.png",
-    ],
-  },
-  {
-    id: 5, name: "Black Cap",        price: 79.99, isCaps: true,
-    image: "/assets/images/JNSWE_caps_18_black.jpg",
-    images: [
-      "/assets/images/JNSWE_caps_18_black.jpg",
-      "/assets/images/JNSWE_caps_18_black1.jpg",
-      "/assets/images/JNSWE_caps_18_black2.jpg",
-      "/assets/images/JNSWE_caps_18_black3.jpg",
-    ],
-  },
-  {
-    id: 6, name: "Pink Cap",         price: 79.99, isCaps: true,
-    image: "/assets/images/JNSWE_caps_17_pink.jpg",
-    images: [
-      "/assets/images/JNSWE_caps_17_pink.jpg",
-      "/assets/images/JNSWE_caps_17_pink1.jpg",
-      "/assets/images/JNSWE_caps_17_pink2.jpg",
-      "/assets/images/JNSWE_caps_17_pink3.jpg",
-    ],
-  },
-  {
-    id: 7, name: "Blue Cap",         price: 84.99, isCaps: true,
-    image: "/assets/images/JNSWE_caps_19_blue.jpg",
-    images: [
-      "/assets/images/JNSWE_caps_19_blue.jpg",
-      "/assets/images/JNSWE_caps_19_blue1.jpg",
-      "/assets/images/JNSWE_caps_19_blue2.jpg",
-      "/assets/images/JNSWE_caps_19_blue3.jpg",
-    ],
-  },
-  {
-    id: 8, name: "Brown Cap",        price: 84.99, isCaps: true,
-    image: "/assets/images/JNSWE_caps_20_brown.jpg",
-    images: [
-      "/assets/images/JNSWE_caps_20_brown.jpg",
-      "/assets/images/JNSWE_caps_20_brown1.jpg",
-      "/assets/images/JNSWE_caps_20_brown2.jpg",
-      "/assets/images/JNSWE_caps_20_brown3.jpg",
-    ],
-  },
-  {
-    id: 9, name: "Back Zip Cap",     price: 84.99, isCaps: true,
-    image: "/assets/images/JNSWE_caps_21_backzip.jpg",
-    images: [
-      "/assets/images/JNSWE_caps_21_backzip.jpg",
-      "/assets/images/JNSWE_caps_21_backzip1.jpg",
-      "/assets/images/JNSWE_caps_21_backzip2.jpg",
-      "/assets/images/JNSWE_caps_21_backzip3.jpg",
-    ],
-  },
-  {
-    id: 10, name: "White Cap",        price: 79.99, isCaps: true,
-    image: "/assets/images/JNSWE_caps_22_white.jpg",
-    images: [
-      "/assets/images/JNSWE_caps_22_white.jpg",
-      "/assets/images/JNSWE_caps_22_white1.jpg",
-      "/assets/images/JNSWE_caps_22_white2.jpg",
-      "/assets/images/JNSWE_caps_22_white3.jpg",
-    ],
-  },
-];
+import { allProducts, getCapsProducts, getNonCapsProducts } from "@/lib/productData";
 
 type Props = {
   capsOnly?: boolean;
@@ -113,7 +12,7 @@ type Props = {
 };
 
 export default function CollectionCarousel({ capsOnly = false, title = "DISCOVER COLLECTION" }: Props) {
-  const products = capsOnly ? allProducts.filter((p) => p.isCaps) : allProducts.filter((p) => !p.isCaps);
+  const products = capsOnly ? getCapsProducts() : getNonCapsProducts();
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);

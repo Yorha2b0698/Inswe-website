@@ -16,7 +16,7 @@ export const allProducts: Product[] = [
     id: 1,
     name: " Cesarine leather bag",
     price: 79.99,
-    image: "/assets/images/Bag-black.jpg",
+    image: "/assets/images/Bag-black1.jpg",
     images: [
       "/assets/images/Bag-black1.jpeg",
       "/assets/images/Bag-black2.jpeg",
@@ -28,23 +28,50 @@ export const allProducts: Product[] = [
   },
   {
     id: 2,
-    name: "Cesarine Grande yellow bag",
+    name: " Cesarine leather bag",
     price: 79.99,
-    image: "/assets/images/Bag-yellow.png",
+    image: "/assets/images/Bag-black-small.jpg",
     images: [
-      "/assets/images/Bag-yellow1.png",
-      "/assets/images/Bag-yellow2.png",
-      "/assets/images/Bag-yellow3.png",
-      "/assets/images/Bag-yellow4.png",
+      "/assets/images/Bag-black-small1.jpg",
+      "/assets/images/Bag-black-small2.jpg",
+      "/assets/images/Bag-black-small3.jpg",
+      "/assets/images/Bag-black-small4.JPG",
     ],
     inStock: true,
     isFeatured: true,
   },
   {
     id: 3,
+    name: "Cesarine Grande yellow bag",
+    price: 79.99,
+    image: "/assets/images/Bag-yellow1.png",
+    images: [
+      "/assets/images/Bag-yellow1.png",
+      "/assets/images/Bag-yellow2.png",
+      "/assets/images/Bag-yellow3.png",
+    ],
+    inStock: true,
+    isFeatured: true,
+  },
+  {
+    id: 4,
+    name: "Cesarine Grande yellow bag",
+    price: 79.99,
+    image: "/assets/images/Bag-yellow-small.png",
+    images: [
+      "/assets/images/Bag-yellow-small.png",
+      "/assets/images/Bag-yellow-small1.png",
+      "/assets/images/Bag-yellow-small2.png",
+      "/assets/images/Bag-yellow-small3.png",
+    ],
+    inStock: true,
+    isFeatured: true,
+  },
+  {
+    id: 5,
     name: "Pink zipper cap",
     price: 84.99,
-    image: "/assets/images/JNSWE_caps_17_pink.jpg",
+    image: "/assets/images/Bag-yellow-small.png",
     images: [
       "/assets/images/JNSWE_caps_17_pink.jpg",
       "/assets/images/JNSWE_caps_17_pink1.jpg",
@@ -55,7 +82,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 4,
+    id: 6,
     name: "Black rope trucker cap",
     price: 84.99,
     image: "/assets/images/JNSWE_caps_18_black.jpg",
@@ -69,7 +96,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 5,
+    id: 7,
     name: "Blue rope trucker cap",
     price: 84.99,
     image: "/assets/images/JNSWE_caps_19_blue.jpg",
@@ -83,7 +110,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 6,
+    id: 8,
     name: "Brown zipper cap",
     price: 79.99,
     image: "/assets/images/JNSWE_caps_20_brown.jpg",
@@ -97,7 +124,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 7,
+    id: 9,
     name: "Black zipper cap",
     price: 84.99,
     image: "/assets/images/JNSWE_caps_21_backzip.jpg",
@@ -111,7 +138,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 8,
+    id: 10,
     name: "White Rope cap",
     price: 79.99,
     image: "/assets/images/JNSWE_caps_22_white.jpg",

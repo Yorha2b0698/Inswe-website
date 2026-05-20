@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export const allProducts = [
   {
     id: 1, name: " Cesarine leather bag",        price: 79.99, isCaps: false,
-    image: "/assets/images/Bag-black.jpg",
+    image: "/assets/images/Bag-black1.jpeg",
     images: [
       "/assets/images/Bag-black1.jpeg",
       "/assets/images/Bag-black2.jpeg",
@@ -18,32 +18,31 @@ export const allProducts = [
   },
   {
     id: 2, name: " Cesarine leather bag",        price: 79.99, isCaps: false,
-    image: "/assets/images/Bag-black2.jpeg",
+    image: "/assets/images/Bag-black-small.jpg",
     images: [
-      "/assets/images/Bag-black1.jpeg",
-      "/assets/images/Bag-black.jpg",
-      "/assets/images/Bag-black3.jpeg",
-      "/assets/images/Bag-black4.png",
+      "/assets/images/Bag-black-small1.jpg",
+      "/assets/images/Bag-black-small2.jpg",
+      "/assets/images/Bag-black-small3.jpg",
+      "/assets/images/Bag-black-small4.JPG",
     ],
   },
   {
     id: 3, name: "Cesarine Grande yellow bag",        price: 79.99, isCaps: false,
-    image: "/assets/images/Bag-yellow.png",
+    image: "/assets/images/Bag-yellow1.png",
     images: [
       "/assets/images/Bag-yellow1.png",
       "/assets/images/Bag-yellow2.png",
       "/assets/images/Bag-yellow3.png",
-      "/assets/images/Bag-yellow4.png",
     ],
   },
   {
     id: 4, name: "Cesarine Grande yellow bag",        price: 79.99, isCaps: false,
-    image: "/assets/images/Bag-yellow4.png",
+    image: "/assets/images/Bag-yellow-small.png",
     images: [
-      "/assets/images/Bag-yellow1.png",
-      "/assets/images/Bag-yellow2.png",
-      "/assets/images/Bag-yellow3.png",
-      "/assets/images/Bag-yellow.png",
+      "/assets/images/Bag-yellow-small.png",
+      "/assets/images/Bag-yellow-small1.png",
+      "/assets/images/Bag-yellow-small2.png",
+      "/assets/images/Bag-yellow-small3.png",
     ],
   },
   {

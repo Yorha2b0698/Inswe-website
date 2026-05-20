@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const allProducts = [
   {
-    id: 1, name: "Modern Leather Black Bag",        price: 79.99, isCaps: false,
+    id: 1, name: " Cesarine leather bag",        price: 79.99, isCaps: false,
     image: "/assets/images/Bag-black.jpg",
     images: [
       "/assets/images/Bag-black1.jpeg",
@@ -17,7 +17,7 @@ export const allProducts = [
     ],
   },
   {
-    id: 2, name: "Modern Leather Black Bag",        price: 79.99, isCaps: false,
+    id: 2, name: " Cesarine leather bag",        price: 79.99, isCaps: false,
     image: "/assets/images/Bag-black2.jpeg",
     images: [
       "/assets/images/Bag-black1.jpeg",
@@ -27,7 +27,7 @@ export const allProducts = [
     ],
   },
   {
-    id: 3, name: "Modern Leather Yellow Bag",        price: 79.99, isCaps: false,
+    id: 3, name: "Cesarine Grande yellow bag",        price: 79.99, isCaps: false,
     image: "/assets/images/Bag-yellow.png",
     images: [
       "/assets/images/Bag-yellow1.png",
@@ -37,7 +37,7 @@ export const allProducts = [
     ],
   },
   {
-    id: 4, name: "Modern Leather Yellow Bag",        price: 79.99, isCaps: false,
+    id: 4, name: "Cesarine Grande yellow bag",        price: 79.99, isCaps: false,
     image: "/assets/images/Bag-yellow4.png",
     images: [
       "/assets/images/Bag-yellow1.png",

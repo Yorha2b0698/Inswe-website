@@ -14,7 +14,7 @@ export const allProducts: Product[] = [
   // Existing products from ProductSection
   {
     id: 1,
-    name: "Modern Leather Black Bag",
+    name: " Cesarine leather bag",
     price: 79.99,
     image: "/assets/images/Bag-black.jpg",
     images: [
@@ -28,7 +28,7 @@ export const allProducts: Product[] = [
   },
   {
     id: 2,
-    name: "Modern Leather Yellow Bag",
+    name: "Cesarine Grande yellow bag",
     price: 79.99,
     image: "/assets/images/Bag-yellow.png",
     images: [

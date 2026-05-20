@@ -14,77 +14,34 @@ export const allProducts: Product[] = [
   // Existing products from ProductSection
   {
     id: 1,
-    name: "Modern Leather Bag",
+    name: "Modern Leather Black Bag",
     price: 79.99,
-    image: "/assets/images/PHO00003.JPG",
+    image: "/assets/images/Bag-black.jpg",
     images: [
-      "/assets/images/PHO00003.JPG",
-      "/assets/images/PHO00004.JPG",
-      "/assets/images/PHO00005.JPG",
-      "/assets/images/PHO00006.JPG",
+      "/assets/images/Bag-black1.jpeg",
+      "/assets/images/Bag-black2.jpeg",
+      "/assets/images/Bag-black3.jpeg",
+      "/assets/images/Bag-black4.png",
     ],
     inStock: true,
     isFeatured: true,
   },
   {
     id: 2,
-    name: "Modern Leather Bag2",
+    name: "Modern Leather Yellow Bag",
     price: 79.99,
-    image: "/assets/images/PHO00007.JPG",
+    image: "/assets/images/Bag-yellow.png",
     images: [
-      "/assets/images/PHO00007.JPG",
-      "/assets/images/PHO00009.JPG",
-      "/assets/images/PHO00010.JPG",
-      "/assets/images/PHO00011.JPG",
+      "/assets/images/Bag-yellow1.png",
+      "/assets/images/Bag-yellow2.png",
+      "/assets/images/Bag-yellow3.png",
+      "/assets/images/Bag-yellow4.png",
     ],
     inStock: true,
     isFeatured: true,
   },
-  // CollectionCarousel featured products
   {
     id: 3,
-    name: "Modern Leather Bag3",
-    price: 79.99,
-    image: "/assets/images/PHO00009.JPG",
-    images: [
-      "/assets/images/PHO00009.JPG",
-      "/assets/images/PHO00007.JPG",
-      "/assets/images/PHO00010.JPG",
-      "/assets/images/PHO00011.JPG",
-    ],
-    inStock: true,
-    isFeatured: true,
-  },
-  {
-    id: 4,
-    name: "Modern Leather Bag4",
-    price: 79.99,
-    image: "/assets/images/PHO00010.JPG",
-    images: [
-      "/assets/images/PHO00010.JPG",
-      "/assets/images/PHO00009.JPG",
-      "/assets/images/PHO0007.JPG",
-      "/assets/images/PHO00011.JPG",
-    ],
-    inStock: true,
-    isFeatured: true,
-  },
-  {
-    id: 5,
-    name: "Modern Leather Bag5",
-    price: 79.99,
-    image: "/assets/images/PHO00011.JPG",
-    images: [
-      "/assets/images/PHO00011.JPG",
-      "/assets/images/PHO00009.JPG",
-      "/assets/images/PHO0007.JPG",
-      "/assets/images/PHO00010.JPG",
-    ],
-    inStock: true,
-    isFeatured: true,
-  },
-  {
-    id: 6,
     name: "Pink zipper cap",
     price: 84.99,
     image: "/assets/images/JNSWE_caps_17_pink.jpg",
@@ -98,7 +55,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 7,
+    id: 4,
     name: "Black rope trucker cap",
     price: 84.99,
     image: "/assets/images/JNSWE_caps_18_black.jpg",
@@ -112,7 +69,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 8,
+    id: 5,
     name: "Blue rope trucker cap",
     price: 84.99,
     image: "/assets/images/JNSWE_caps_19_blue.jpg",
@@ -126,7 +83,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 9,
+    id: 6,
     name: "Brown zipper cap",
     price: 79.99,
     image: "/assets/images/JNSWE_caps_20_brown.jpg",
@@ -140,7 +97,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 10,
+    id: 7,
     name: "Black zipper cap",
     price: 84.99,
     image: "/assets/images/JNSWE_caps_21_backzip.jpg",
@@ -154,7 +111,7 @@ export const allProducts: Product[] = [
     isCaps:true
   },
   {
-    id: 11,
+    id: 8,
     name: "White Rope cap",
     price: 79.99,
     image: "/assets/images/JNSWE_caps_22_white.jpg",

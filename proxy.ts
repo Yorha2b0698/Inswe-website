@@ -8,7 +8,7 @@ const JWT_SECRET = new TextEncoder().encode(
 // Routes that require authentication
 const PROTECTED = ["/account", "/account/addresses"];
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Only run on protected routes

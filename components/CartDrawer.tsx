@@ -120,21 +120,21 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
             Duties and taxes included. Shipping is calculated at checkout.
           </p>
 
-          <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
             <Link href="/checkout" onClick={onClose} className="flex h-12 w-full items-center justify-center rounded-full bg-[#1a1a1a] text-[14px] font-medium text-white transition hover:bg-[#333]">
               Check out
             </Link>
-            <button className="flex h-12 w-full items-center justify-center rounded-full bg-[#5A31F4] text-[14px] font-bold text-white transition hover:opacity-90">
+            <Link href="/checkout" onClick={onClose} className="flex h-12 w-full items-center justify-center rounded-full bg-[#5A31F4] text-[14px] font-bold text-white transition hover:opacity-90">
               shop
-            </button>
-            <button className="flex h-12 w-full items-center justify-center rounded-full bg-[#FFC439] text-[14px] font-bold italic transition hover:opacity-90">
+            </Link>
+            <Link href="/checkout" onClick={onClose} className="flex h-12 w-full items-center justify-center rounded-full bg-[#FFC439] text-[14px] font-bold italic transition hover:opacity-90">
               <span className="text-[#003087]">Pay</span>
               <span className="text-[#009cde]">Pal</span>
-            </button>
-            <button className="flex h-12 w-full items-center justify-center gap-0.5 rounded-full bg-[#1a1a1a] transition hover:bg-[#333]">
+            </Link>
+            <Link href="/checkout" onClick={onClose} className="flex h-12 w-full items-center justify-center gap-0.5 rounded-full bg-[#1a1a1a] transition hover:bg-[#333]">
               <span className="text-[14px] font-bold text-[#4285F4]">G</span>
               <span className="text-[14px] font-bold text-white"> Pay</span>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

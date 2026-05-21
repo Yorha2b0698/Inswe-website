@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState, useRef, useEffect } from "react";
+import { Dispatch, SetStateAction, useState, useRef, useEffect, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
 import { type Product } from "@/lib/products";
 
@@ -68,7 +68,7 @@ export default function ShopFilters({
     }, []);
 
     // Helper function to apply all filters and sorting
-    const applyAllFilters = () => {
+    const applyAllFilters = useCallback(() => {
         let filtered = [...products];
         
         // 1. Apply availability filter
@@ -133,12 +133,12 @@ export default function ShopFilters({
         }
         
         setFilteredProducts(filtered);
-    };
+    }, [products, sort, availability, minPrice, maxPrice, setFilteredProducts]);
 
     // Apply filters whenever sort, availability, or price range changes
     useEffect(() => {
         applyAllFilters();
-    }, [sort, availability, minPrice, maxPrice, products]);
+    }, [applyAllFilters]);
 
     // SORT
     const handleSort = (value: string) => {

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, RotateCcw, Truck } from "lucide-react";
 import { useCart } from "@/lib/CartContext";
-import { allProducts, getRelatedProducts } from "@/lib/products";
+import { getRelatedProducts } from "@/lib/products";
 
 type ProductDetailProps = {
   product: {

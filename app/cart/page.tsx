@@ -140,17 +140,17 @@ export default function CartPage() {
                 <Link href="/checkout" className="flex h-11 w-full items-center justify-center rounded-full bg-[#1a1a1a] text-[13px] font-medium text-white transition hover:bg-[#333]">
                   Check out
                 </Link>
-                <button className="flex h-11 w-full items-center justify-center rounded-full bg-[#5A31F4] text-[14px] font-bold text-white transition hover:opacity-90">
+                <Link href="/checkout" className="flex h-11 w-full items-center justify-center rounded-full bg-[#5A31F4] text-[14px] font-bold text-white transition hover:opacity-90">
                   shop
-                </button>
-                <button className="flex h-11 w-full items-center justify-center rounded-full bg-[#FFC439] text-[14px] font-bold transition hover:opacity-90">
+                </Link>
+                <Link href="/checkout" className="flex h-11 w-full items-center justify-center rounded-full bg-[#FFC439] text-[14px] font-bold transition hover:opacity-90">
                   <span className="italic text-[#003087]">Pay</span>
                   <span className="italic text-[#009cde]">Pal</span>
-                </button>
-                <button className="flex h-11 w-full items-center justify-center gap-0.5 rounded-full bg-[#1a1a1a] transition hover:bg-[#333]">
+                </Link>
+                <Link href="/checkout" className="flex h-11 w-full items-center justify-center gap-0.5 rounded-full bg-[#1a1a1a] transition hover:bg-[#333]">
                   <span className="text-[13px] font-bold text-[#4285F4]">G</span>
                   <span className="text-[13px] font-bold text-white"> Pay</span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>

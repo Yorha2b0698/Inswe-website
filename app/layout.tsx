@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Inswè",
-  description: "A modern website built with Next.js and Tailwind CSS",
+  description: "Inswè — luxury bags and caps by designer Juan José Mouko Nsue.",
   other: {
     "google": "notranslate",
   },

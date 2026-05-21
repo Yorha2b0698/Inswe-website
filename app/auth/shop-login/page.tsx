@@ -14,7 +14,7 @@ export default function ShopLoginPage() {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   // ── STEP 1: send OTP ──────────────────────────────────────────
-  const handleSendOtp = async (e: React.FormEvent) => {
+  const handleSendOtp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     setLoading(true);
@@ -39,7 +39,7 @@ export default function ShopLoginPage() {
   };
 
   // ── STEP 2: verify OTP ───────────────────────────────────────
-  const handleVerifyOtp = async (e: React.FormEvent) => {
+  const handleVerifyOtp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const code = otp.join("");
     if (code.length < 6) { setError("Please enter the full 6-digit code."); return; }

@@ -85,7 +85,7 @@ export default function CollectionCarousel({ capsOnly = false, title = "DISCOVER
           className="flex gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           style={{ scrollSnapType: "x mandatory" }}
         >
-          {products.map((product) => (
+          {products.map((product, index) => (
             <Link
               key={product.id}
               href={`/shop/${product.id}`}
@@ -99,6 +99,7 @@ export default function CollectionCarousel({ capsOnly = false, title = "DISCOVER
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 340px"
+                  loading={index === 0 ? "eager" : "lazy"}
                 />
               </div>
               <div className="pt-3">

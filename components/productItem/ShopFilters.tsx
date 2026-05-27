@@ -133,7 +133,7 @@ export default function ShopFilters({
         }
         
         setFilteredProducts(filtered);
-    }, [products, sort, availability, minPrice, maxPrice, setFilteredProducts]);
+    }, [products, sort, availability, minPrice, maxPrice]);
 
     // SORT
     const handleSort = (value: string) => {

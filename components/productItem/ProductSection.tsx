@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import ProductCard from "./ProductCard";
 import ShopFilter from "./ShopFilters";
 import { allProducts, type Product, getCapsProducts, getNonCapsProducts} from "@/lib/products";
@@ -15,34 +15,30 @@ export default function ProductSection({ initialCategory }: ProductSectionProps)
   const [view, setView] = useState<"default" | "zoom-out">("default");
   const [sort, setSort] = useState("manual");
   
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(() => {
-    console.log("ProductSection initial state - initialCategory:", initialCategory);
+  // Memoize the products based on category to prevent infinite re-renders
+  const products = useMemo(() => {
+    console.log("ProductSection useMemo - recalculating products for category:", initialCategory);
     if (initialCategory === "caps") {
       return getCapsProducts();
-    } else if(initialCategory === "bags"){
+    } else if (initialCategory === "bags") {
       return getNonCapsProducts();
     }
-
     return allProducts;
-  });
+  }, [initialCategory]);
+  
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
   // Update filtered products when initialCategory changes
   useEffect(() => {
     console.log("ProductSection useEffect - initialCategory changed:", initialCategory);
-    if (initialCategory === "caps") {
-      setFilteredProducts(getCapsProducts());
-    } else if(initialCategory === "bags"){
-      setFilteredProducts(getNonCapsProducts());
-    } else {
-      setFilteredProducts(allProducts);
-    }
-  }, [initialCategory]);
+    setFilteredProducts(products);
+  }, [initialCategory, products]);
 
   return (
     <section className="max-w-[1450px] mx-auto px-4 py-8 sm:px-6 lg:px-10">
       {/* FILTER TOP */}
       <ShopFilter
-        products={initialCategory === "caps" ? getCapsProducts() : allProducts}
+        products={products}
         view={view}
         setView={setView}
         sort={sort}

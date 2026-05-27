@@ -16,7 +16,7 @@ export default function HomePage() {
         title="Pre-order now"
         subtitle="Made with care and unconditionally loved by our customers."
         buttonText="Shop Now"
-        buttonHref="/shop"
+        buttonHref="/collection"
         videoSrc="/assets/videos/about_bag.mp4"
       />
 
@@ -30,7 +30,7 @@ export default function HomePage() {
       <VideoHero
         title=""
         buttonText="Shop Caps"
-        buttonHref="/shop"
+        buttonHref="/shop?category=caps"
         videoSrc="/assets/videos/Caps.mp4"
       />
 
@@ -44,7 +44,7 @@ export default function HomePage() {
       <VideoHero
         title="DISCOVER INSWÈ CAMPAIGN SZN 1"
         buttonText="SEE NOW"
-        buttonHref="/shop"
+        buttonHref="/shop?category=bags"
         images="/assets/images/campaign-7.jpg"
       />
 

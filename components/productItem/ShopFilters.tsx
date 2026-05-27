@@ -67,8 +67,8 @@ export default function ShopFilters({
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // Helper function to apply all filters and sorting
-    const applyAllFilters = useCallback(() => {
+    // Apply filters whenever sort, availability, price range, or products change
+    useEffect(() => {
         let filtered = [...products];
         
         // 1. Apply availability filter
@@ -134,11 +134,6 @@ export default function ShopFilters({
         
         setFilteredProducts(filtered);
     }, [products, sort, availability, minPrice, maxPrice, setFilteredProducts]);
-
-    // Apply filters whenever sort, availability, or price range changes
-    useEffect(() => {
-        applyAllFilters();
-    }, [applyAllFilters]);
 
     // SORT
     const handleSort = (value: string) => {

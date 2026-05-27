@@ -71,7 +71,7 @@ export default function CollectionCarousel({ capsOnly = false, title = "DISCOVER
               <ChevronRight size={18} strokeWidth={2} />
             </button>
             <Link
-              href="/shop"
+              href={capsOnly ? "/shop?category=caps" : "/shop"}
               className="text-[13px] text-[#555] underline underline-offset-2 transition hover:text-[#1a1a1a]"
             >
               View all

@@ -12,16 +12,17 @@ export type ProductData = {
 // Centralized product catalog - single source of truth for all product data
 export const allProducts: ProductData[] = [
   // Bag products
+  
   {
     id: 1,
     name: "Cesarine leather bag",
     price: 79.99,
-    image: "/assets/images/Bag-black1.jpeg",
+    image: "/assets/images/Bag-black2.jpeg",
     images: [
-      "/assets/images/Bag-black1.jpeg",
       "/assets/images/Bag-black2.jpeg",
       "/assets/images/Bag-black3.jpeg",
       "/assets/images/Bag-black4.png",
+      "/assets/images/Bag-black1.jpeg",
     ],
     inStock: true,
     isFeatured: true,
@@ -31,10 +32,10 @@ export const allProducts: ProductData[] = [
     id: 2,
     name: "Cesarine leather bag",
     price: 79.99,
-    image: "/assets/images/Bag-black-small.jpg",
+    image: "/assets/images/Bag-black-small2.jpg",
     images: [
-      "/assets/images/Bag-black-small1.jpg",
       "/assets/images/Bag-black-small2.jpg",
+      "/assets/images/Bag-black-small1.jpg",
       "/assets/images/Bag-black-small3.jpg",
       "/assets/images/Bag-black-small4.JPG",
     ],
@@ -46,30 +47,28 @@ export const allProducts: ProductData[] = [
     id: 3,
     name: "Cesarine Grande yellow bag",
     price: 79.99,
-    image: "/assets/images/Bag-yellow1.png",
+    image: "/assets/images/Bag-yellow2.png",
     images: [
-      "/assets/images/Bag-yellow1.png",
       "/assets/images/Bag-yellow2.png",
       "/assets/images/Bag-yellow3.png",
     ],
     inStock: true,
     isFeatured: true,
-    isCaps: false,
+    isCaps: true,
   },
   {
     id: 4,
     name: "Cesarine Grande yellow bag",
     price: 79.99,
-    image: "/assets/images/Bag-yellow-small.png",
+    image: "/assets/images/Bag-yellow-small1.png",
     images: [
-      "/assets/images/Bag-yellow-small.png",
       "/assets/images/Bag-yellow-small1.png",
       "/assets/images/Bag-yellow-small2.png",
       "/assets/images/Bag-yellow-small3.png",
     ],
     inStock: true,
     isFeatured: true,
-    isCaps: false,
+    isCaps: true,
   },
   // Cap products
   // {

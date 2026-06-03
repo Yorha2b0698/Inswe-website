@@ -12,24 +12,8 @@ export type ProductData = {
 // Centralized product catalog - single source of truth for all product data
 export const allProducts: ProductData[] = [
   // Bag products
-  
   {
     id: 1,
-    name: "Cesarine leather bag",
-    price: 79.99,
-    image: "/assets/images/Bag-black2.jpeg",
-    images: [
-      "/assets/images/Bag-black2.jpeg",
-      "/assets/images/Bag-black3.jpeg",
-      "/assets/images/Bag-black4.png",
-      "/assets/images/Bag-black1.jpeg",
-    ],
-    inStock: true,
-    isFeatured: true,
-    isCaps: false,
-  },
-  {
-    id: 2,
     name: "Cesarine leather bag",
     price: 79.99,
     image: "/assets/images/Bag-black-small2.jpg",
@@ -38,6 +22,20 @@ export const allProducts: ProductData[] = [
       "/assets/images/Bag-black-small1.jpg",
       "/assets/images/Bag-black-small3.jpg",
       "/assets/images/Bag-black-small4.JPG",
+    ],
+    inStock: true,
+    isFeatured: true,
+  },
+  {
+    id: 2,
+    name: "Cesarine leather bag",
+    price: 79.99,
+    image: "/assets/images/Bag-black2.jpeg",
+    images: [
+      "/assets/images/Bag-black2.jpeg",
+      "/assets/images/Bag-black3.jpeg",
+      "/assets/images/Bag-black4.png",
+      "/assets/images/Bag-black1.jpeg",
     ],
     inStock: true,
     isFeatured: true,

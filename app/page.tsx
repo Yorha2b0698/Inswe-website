@@ -16,35 +16,39 @@ export default function HomePage() {
         title="Pre-order now"
         subtitle="Made with care and unconditionally loved by our customers."
         buttonText="Shop Now"
-        buttonHref="/collection"
+        buttonHref="/shop?category=bags"
         videoSrc="/assets/videos/about_bag.mp4"
       />
 
-      {/* First DISCOVER COLLECTION — caps only */}
+       {/* First DISCOVER COLLECTION — caps only */}
       <CollectionCarousel
         capsOnly={false}
         title="DISCOVER COLLECTION"
       />
 
+{/* //================================================Caps================================================================= */}
+
       {/* Caps video */}
-      <VideoHero
+      {/* <VideoHero
         title=""
         buttonText="Shop Caps"
         buttonHref="/shop?category=caps"
         videoSrc="/assets/videos/Caps.mp4"
-      />
+      /> */}
 
       {/* Second DISCOVER COLLECTION — caps only, below Caps.mp4 */}
-      <CollectionCarousel
+      {/* <CollectionCarousel
         capsOnly={true}
         title="DISCOVER COLLECTION"
-      />
+      /> */}
+{/* //================================================Caps================================================================= */}
+
 
       {/* Campaign image section */}
       <VideoHero
         title="DISCOVER INSWÈ CAMPAIGN SZN 1"
         buttonText="SEE NOW"
-        buttonHref="/shop?category=bags"
+        buttonHref="/collection"
         images="/assets/images/campaign-7.jpg"
       />
 

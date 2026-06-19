@@ -1,4 +1,4 @@
-######### Modern Website Template
+########## Modern Website Template
 
 A modern, responsive website template built with Next.js 14 and Tailwind CSS.
 
